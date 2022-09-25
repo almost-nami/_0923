@@ -2,6 +2,7 @@ package org.zerock.service;
 
 import org.springframework.stereotype.Service;
 
+// @Service : 스프링 빈으로 등록
 @Service
 public class SampleServiceImpl implements SampleService {
 

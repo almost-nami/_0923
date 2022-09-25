@@ -13,6 +13,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/applicationContext.xml"})
 public class SampleServiceTests {
 
+    /*
+        <aop:aspectj-autoproxy></aop:aspectj-autoproxy> 가 정상적으로 동작하고
+        LogAdvice의 설정 문제가 없다면 service 변수의 클래스는
+        단순히 org.zerock.service.SampleServiceImpl의
+        인스턴스가 아닌 생성된 Proxy클래스의 인스턴스가 됨
+     */
     @Setter(onMethod_ = @Autowired)
     private SampleService service;
 
