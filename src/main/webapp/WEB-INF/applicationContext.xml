@@ -24,6 +24,7 @@
         <property name="dataSource" ref="dataSource"></property>
     </bean>
 
+    <!-- 스프링의 트랜잭션을 이용하기 위해 필요한 존재 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"></property>
     </bean>
