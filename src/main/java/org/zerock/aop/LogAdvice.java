@@ -25,13 +25,14 @@ public class LogAdvice {
 
 
     // @Before : BeforeAdvice를 구현한 메소드
-    // execution 뒤에 문자열은 AspectJ의 표현식
+    // execution 뒤에 문자열은 AspectJ의 표현식 : 맨 앞의 * 접근제한자, 맨 뒤의 * 클래스의 이름과 메소드의 이름
     @Before("execution(* org.zerock.service.SampleService*.*(..))") // 어떤 위치에 Advice를 적용할 것인지를 결정하는 Pointcut
     public void logBefore() {
 
         log.info("======================");
     }
 
+    // Pointcut 설정에 doAdd() 메소드를 명시하고 파라미터의 타입을 지정
     // && args : 간단히 파라미터를 찾아서 기록할 때에는 유용하지만 파라미터가 다른 여러 종류의 메서드에 적용하는 데에는 간단하지 않음
     @Before("execution(* org.zerock.service.SampleService*.doAdd(String, String)) && args(str1, str2)")
     public void logBeforeWithParam(String str1, String str2) {
@@ -52,6 +53,8 @@ public class LogAdvice {
 
     // AOP를 이용해서 좀 더 구체적인 처리를 하고 싶다면 @Around와 ProceedingJoinPoint를 이용
     // @Around : 직접 대상 메서드를 실행할 수 있는 권한을 가지고 있고, 메서드의 실행 전과 실행 후에 처리가 가능
+    //      -> 리턴 타입이 void가 아닌 타입으로 설정하고 실행결과 역시 직접 반환하는 형태로 작성
+    // ProceedingJoinPoint : AOP의 대상이 되는 Target이나 파라미터 등을 파악하고 직접 실행을 결정할 수도 있음
     @Around("execution(* org.zerock.service.SampleService*.*(..))")
     public Object logTime(ProceedingJoinPoint pjp) {
 

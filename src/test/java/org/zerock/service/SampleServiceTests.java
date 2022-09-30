@@ -25,7 +25,7 @@ public class SampleServiceTests {
     @Test
     public void testClass() {
 
-        log.info(service);
+        log.info(service);  // toString()의 결과
         log.info(service.getClass().getName());
 
     }
@@ -33,6 +33,7 @@ public class SampleServiceTests {
     @Test
     public void testAdd() throws Exception {
 
+        // LogAdvice의 설정이 같이 적용되어서 결과가 나옴
         log.info(service.doAdd("123", "456"));
 
     }
